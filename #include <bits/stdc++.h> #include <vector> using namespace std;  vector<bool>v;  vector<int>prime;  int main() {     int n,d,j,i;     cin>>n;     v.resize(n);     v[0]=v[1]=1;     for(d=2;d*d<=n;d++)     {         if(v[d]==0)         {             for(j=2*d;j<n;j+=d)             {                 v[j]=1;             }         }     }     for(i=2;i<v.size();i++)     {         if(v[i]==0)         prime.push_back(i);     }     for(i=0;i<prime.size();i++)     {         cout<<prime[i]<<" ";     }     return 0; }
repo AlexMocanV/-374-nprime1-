@@ -1,0 +1,35 @@
+#include <bits/stdc++.h>
+#include <vector>
+using namespace std;
+
+vector<bool>v;
+
+vector<int>prime;
+
+int main()
+{
+    int n,d,j,i;
+    cin>>n;
+    v.resize(n);
+    v[0]=v[1]=1;
+    for(d=2;d*d<=n;d++)
+    {
+        if(v[d]==0)
+        {
+            for(j=2*d;j<n;j+=d)
+            {
+                v[j]=1;
+            }
+        }
+    }
+    for(i=2;i<v.size();i++)
+    {
+        if(v[i]==0)
+        prime.push_back(i);
+    }
+    for(i=0;i<prime.size();i++)
+    {
+        cout<<prime[i]<<" ";
+    }
+    return 0;
+}
